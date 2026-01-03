@@ -1,7 +1,6 @@
 // An attribute to hide warnings for unused code.
 #![allow(dead_code)]
 
-
 // A unit struct
 struct Unit;
 
@@ -22,14 +21,20 @@ struct Rectangle {
     bottom_right: Point,
 }
 
-fn rect_area(rect : Rectangle) -> f32 {
-    let Rectangle {top_left : Point {x: top_x, y : top_y}, bottom_right : Point {x: bottom_x, y: bottom_y}} = rect;
-    (top_x - bottom_x)*(top_y - bottom_y).abs()
+fn rect_area(rect: Rectangle) -> f32 {
+    let Rectangle {
+        top_left: Point { x: top_x, y: top_y },
+        bottom_right: Point { x: bottom_x, y: bottom_y },
+    } = rect;
+    (top_x - bottom_x) * (top_y - bottom_y).abs()
 }
 
-fn square(point : Point, wh : f32) -> Rectangle {
-    let Point {x : x_coord, y :y_coord } = point;
-    Rectangle {top_left : Point{x: x_coord, y : y_coord}, bottom_right : Point {x :x_coord + wh, y: y_coord + wh}}
+fn square(point: Point, wh: f32) -> Rectangle {
+    let Point { x: x_coord, y: y_coord } = point;
+    Rectangle {
+        top_left: Point { x: x_coord, y: y_coord },
+        bottom_right: Point { x: x_coord + wh, y: y_coord + wh },
+    }
 }
 
 fn main() {
@@ -40,8 +45,8 @@ fn main() {
         top_left: point,
         bottom_right: another_point,
     };
+
     let area = rect_area(rectangle);
     println!("{:?}", area);
-
     println!("{:?}", square(point, 5.5))
 }
